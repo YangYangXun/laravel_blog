@@ -10,13 +10,15 @@
                 {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="exampleFormControlInput1">Name:</label>
-                <input type="text" class="form-control" name="name" placeholder="name">
+                {!! Form::label('name', 'Name:') !!}
+                {!! Form::text('name', null ,['class' => 'form-control']) !!}
             </div>
+
             <div class="form-group">
-                <label for="exampleFormControlInput1">Email:</label>
-                <input type="text" class="form-control" name="email" placeholder="email">
+                {!! Form::label('email', 'Email:') !!}
+                {!! Form::text('email', null ,['class' => 'form-control']) !!}
             </div>
+           
             <div class="form-group">
                 <label for="exampleFormControlInput1">Role:</label>
                 <select class="form-control" name="role_id" id="role_id">
