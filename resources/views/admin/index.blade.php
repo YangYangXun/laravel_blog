@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1>Users/index</h1>
+<h1>Admin</h1>
 
 
 

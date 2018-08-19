@@ -45,11 +45,21 @@
             </div>
 
 
-            <button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
 
 
 
             {!! Form::close() !!}
+
+            <div style="margin-top: 20px">
+                {!! Form::open(['method' => 'delete', 'action' => ['AdminUsersController@destroy',$user->id], 'class'=>'']) !!}
+                            {{ csrf_field() }}
+                
+                            <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                {!! Form::close() !!}
+            </div>
+            
+            
 
 
 

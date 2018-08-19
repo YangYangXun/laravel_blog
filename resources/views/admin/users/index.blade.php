@@ -4,6 +4,13 @@
 
 @section('content')
 
+  @if (Session::has('deleted_user'))
+   
+     <p>{{session('deleted_user')}}</p>
+
+  @endif
+
+
 <h1>Users/index</h1>
 
 

@@ -31,4 +31,5 @@ class UsersEditRequest extends FormRequest
         ];
 
     }
+
 }

@@ -67,6 +67,8 @@ class AdminUsersController extends Controller
         }
         $input['password'] = bcrypt($request->password);
         User::create($input);
+        return redirect('admin/users');
+
     }
 
     /**
@@ -124,7 +126,7 @@ class AdminUsersController extends Controller
 
         $user->update($input);
 
-        return redirect('admin/users ');
+        return redirect('admin/users');
 
     }
 
@@ -134,8 +136,19 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        $user = User::findOrFail($id);
+
+        // delete image from the directory sametime
+        unlink(public_path() . $user->photo->file);
+
+        $user->delete();
+
+        $request->session()->flash('deleted_user', 'The user has been deleted');
+
+        return redirect('admin/users');
+
     }
 }
