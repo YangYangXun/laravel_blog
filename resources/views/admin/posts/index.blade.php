@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('content')
 <h1>Posts</h1>
+  @if (Session::has('deleted_post'))
+
+     <p>{{session('deleted_post')}}</p>
+
+  @endif
+
+
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -24,8 +32,8 @@
             <td><img height="50" src="{!! URL::asset($post->user->photo->file) !!}"></td>
             <td>{{$post->category ? $post->category->name : 'no category'}}</td>
             <td><img height="50" src="{!! URL::asset($post->photo->file) !!}"></td>
-            <td>{{$post->title}}</td>
-            <td>{{$post->body}}</td>
+            <td><a href="{{route('posts.edit',$post->id)}}">{{$post->title}}</a></td>
+            <td>{{str_limit($post->body,20)}}</td>
             <td>{{$post->created_at->diffForHumans()}}</td>
             <td>{{$post->updated_at->diffForHumans()}}</td>
         </tr>
