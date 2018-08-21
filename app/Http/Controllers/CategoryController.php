@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Requests\PostsCreateRequest;
-use App\Photo;
-use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminPostsController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +15,6 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
-
-        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -32,11 +25,6 @@ class AdminPostsController extends Controller
     public function create()
     {
         //
-
-        $categories = Category::pluck('name', 'id')->all();
-
-        return view('admin.posts.create', compact('categories'));
-
     }
 
     /**
@@ -45,35 +33,18 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostsCreateRequest $request)
+    public function store(Request $request)
     {
         //
-
-        $input = $request->all();
-        $user = Auth::user();
-
-        if ($file = $request->file('photo_id')) {
-            $name = time() . $file->getClientOriginalName();
-
-            $file->move('image', $name);
-
-            $photo = Photo::create(['file' => $name]);
-            $input['photo_id'] = $photo->id;
-        }
-
-        $user->post()->create($input);
-
-        return redirect('admin/posts');
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
     }
@@ -81,10 +52,10 @@ class AdminPostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -93,10 +64,10 @@ class AdminPostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -104,10 +75,10 @@ class AdminPostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }
