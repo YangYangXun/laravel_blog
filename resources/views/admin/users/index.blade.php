@@ -5,7 +5,7 @@
 @section('content')
 
   @if (Session::has('deleted_user'))
-   
+
      <p>{{session('deleted_user')}}</p>
 
   @endif
