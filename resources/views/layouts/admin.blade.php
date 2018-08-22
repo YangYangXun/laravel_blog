@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/libs/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/libs/metisMenu.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/libs/sb-admin-2.css') }}">
+    @yield('styles')
 
     <!-- <link rel="stylesheet" href="css/libs/blog-post.css">
     <link rel="stylesheet" href="css/libs/bootstrap.css">
@@ -188,17 +189,17 @@
 
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
-                        <!-- <ul class="nav nav-second-level">
+                        <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="{{route('media.index')}}">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="{{route('media.create')}}">Upload Media</a>
                             </li>
 
-                        </ul> -->
-                        <!-- /.nav-second-level -->
+                        </ul>
+                        <!-- /.nav-second-level
                     </li>
 
 
@@ -364,6 +365,7 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
+@yield('scripts')
 <script src="{{ URL::asset('js/libs/jquery.js') }}"></script>
 <script src="{{ URL::asset('js/libs/bootstrap.js') }}"></script>
 <script src="{{ URL::asset('js/libs/sb-admin-2.js') }}"></script>
