@@ -53,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="{{route('home')}}">Home</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -84,7 +84,8 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="{{route('login')}}"><i class="fa fa-sign-out fa-fw"></i> Login</a>
+                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -164,6 +165,10 @@
 
                             <li>
                                 <a href="{{route('posts.create')}}">Create Post</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('comments.index')}}">All comments</a>
                             </li>
 
                         </ul>

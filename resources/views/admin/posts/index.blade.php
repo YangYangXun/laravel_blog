@@ -21,6 +21,7 @@
             <th scope="col">Body</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
+            <th scope="col">Link</th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +37,7 @@
             <td>{{str_limit($post->body,20)}}</td>
             <td>{{$post->created_at->diffForHumans()}}</td>
             <td>{{$post->updated_at->diffForHumans()}}</td>
+            <td><a href="{{route('post.home',$post->id)}}">{{$post->id}}</a></td>
         </tr>
         @endforeach @endif
 
