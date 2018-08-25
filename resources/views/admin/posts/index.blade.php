@@ -22,6 +22,7 @@
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
             <th scope="col">Link</th>
+            <th scope="col">View comments</th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +39,7 @@
             <td>{{$post->created_at->diffForHumans()}}</td>
             <td>{{$post->updated_at->diffForHumans()}}</td>
             <td><a href="{{route('post.home',$post->id)}}">{{$post->id}}</a></td>
+            <td><a href="{{route('comments.show',$post->id)}}">Comments</a></td>
         </tr>
         @endforeach @endif
 

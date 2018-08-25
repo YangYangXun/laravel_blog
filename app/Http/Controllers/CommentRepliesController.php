@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\CommentReply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentRepliesController extends Controller
 {
@@ -80,5 +82,26 @@ class CommentRepliesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createReply(Request $request)
+    {
+        $user = Auth::user();
+
+        $data = [
+            'comment_id' => $request->comment_id,
+            'user_id' => $user->id,
+            'email' => $user->email,
+            'author' => $user->name,
+            // 'photo'=>$user->photo->file,
+            'body' => $request->body,
+        ];
+
+        CommentReply::create($data);
+
+        $request->session()->flash('reply_message', 'Your message has been submitted and is waiting moderation');
+
+        return redirect()->back();
+
     }
 }

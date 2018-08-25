@@ -1,6 +1,6 @@
-@extends('layouts.admin') 
+@extends('layouts.admin')
 @section('content')
-<h1>All Comments</h1>
+<h1>Comments for <h3>{{$post->title}}</h3></h1>
 
 @if (Session::has('deleted_comment'))
 <p>{{session('deleted_comment')}}</p>
