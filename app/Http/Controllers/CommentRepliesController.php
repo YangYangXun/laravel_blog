@@ -48,6 +48,10 @@ class CommentRepliesController extends Controller
     public function show($id)
     {
         //
+        $replies = CommentReply::where('comment_id', $id)->get();
+
+        return view('admin.comments.replies.show', compact('replies'));
+
     }
 
     /**
@@ -79,9 +83,15 @@ class CommentRepliesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        $reply = CommentReply::findOrFail($id);
+        $reply->delete();
+        $request->session()->flash('deleted_reply', 'The reply has been deleted');
+
+        return redirect()->back();
+
     }
 
     public function createReply(Request $request)

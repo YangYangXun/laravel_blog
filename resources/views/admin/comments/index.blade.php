@@ -1,4 +1,4 @@
-@extends('layouts.admin') 
+@extends('layouts.admin')
 @section('content')
 <h1>All Comments</h1>
 
@@ -18,6 +18,7 @@
                 <th scope="col">Body</th>
                 <th scope="col">Create</th>
                 <th scope="col">View Post</th>
+                <th scope="col">View Reply</th>
                 <th scope="col">Delete</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
                 <td>{{$comment->body}}</td>
                 <td>{{$comment->created_at->diffForHumans()}}</td>
                 <td><a href="{{route('post.home',$comment->post->id)}}">Link to post</a></td>
+                <td><a href="{{route('replies.show',$comment->id)}}">Link to reply</a></td>
                 <td>
                     {!! Form::open(['method' => 'delete', 'action' => ['PostCommentsController@destroy',$comment->id], 'class'=>'mt-5', 'files'
                     => true ]) !!} {{ csrf_field() }}
